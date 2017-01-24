@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">Daily To Do</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+
+    <string name="note">Note</string>
+    <string name="gallery">Gallery</string>
+    <string name="photo">Photo</string>
+    <string name="map">Map</string>
+
+    <string-array
+        name="weekdays_short">
+        <item>Sat</item>
+        <item>Sun</item>
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thu</item>
+        <item>Fri</item>
+    </string-array>
+
+    <string-array
+        name="weekdays_long">
+        <item>Saturday</item>
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+    </string-array>
+
+
+
+       <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse fringilla aliquam nunc nec interdum. Sed ultrices ante ac est rhoncus sagittis. Proin eget leo auctor, semper massa id, aliquet ex. Fusce posuere lacus sit amet sem consequat condimentum. Suspendisse interdum justo neque, ac venenatis elit pharetra posuere. In auctor est nulla, eget auctor ipsum lobortis quis. In molestie leo tortor, non pulvinar dui commodo eu. Etiam commodo eleifend nisi, vitae efficitur quam pellentesque non. Praesent venenatis viverra nisi, vel aliquet nisi fermentum et. Nullam faucibus est a est finibus ornare.
+
+Phasellus eu metus gravida, finibus mi eu, molestie elit. Mauris vel ligula magna. Praesent lacinia, enim ut finibus iaculis, orci turpis viverra nibh, tempus fringilla diam ipsum ut nisi. Duis in ex luctus, euismod massa ac, fermentum justo. Mauris at maximus orci, et aliquet sem. Ut ornare eu ante sed vulputate. Etiam aliquam orci laoreet nibh ultrices, et lobortis ex ultricies.
+
+Aliquam tempor varius dolor venenatis consequat. Praesent blandit dui eu ante posuere, at aliquam neque mattis. In vel sapien a erat iaculis lobortis. Sed gravida lobortis elit. Nunc non felis ac risus tempus fringilla sed eu libero. Nam consequat, nisl eu aliquet lacinia, felis nulla dictum felis, eu fermentum urna tortor non sapien. Fusce commodo, mauris in porttitor pretium, augue diam vestibulum dolor, eget facilisis leo dui sed lectus. Etiam dolor nisl, sagittis a arcu sed, molestie pellentesque velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris eu fringilla elit. Nulla placerat dictum purus, at posuere massa lacinia non. Morbi in ullamcorper nisl, vel tempor est. Vivamus a maximus purus, nec mollis purus. Nam bibendum scelerisque diam, at aliquam eros suscipit vel.
+
+Donec id faucibus lacus. Donec pharetra fermentum auctor. Maecenas at libero interdum magna volutpat eleifend. Vivamus vel posuere quam, id ultricies massa. Donec sit amet bibendum lorem, vitae ornare odio. Pellentesque mauris lorem, pulvinar at orci vitae, ornare auctor sem. Curabitur tempus, mi eu ultricies ultricies, mauris velit luctus magna, sit amet posuere massa ante porttitor quam.
+
+Mauris sollicitudin at eros vitae faucibus. Proin quis placerat nunc. Nulla facilisi. Mauris a dapibus ex. Nam dictum et nisl ut porta. Mauris ultricies imperdiet ex. Vivamus facilisis eros et orci scelerisque, eu varius nisi dapibus. Nam sapien dui, rhoncus imperdiet ante nec, vehicula egestas felis. Aliquam malesuada molestie quam euismod volutpat. In tempus tincidunt libero et luctus.
+        </string>
+</resources>

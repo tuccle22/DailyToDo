@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:clickable="true"
+    tools:context="com.tuccle22.dtd.dailytodo.MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="224dp"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:layout_collapseParallaxMultiplier="0.2"
+            app:layout_collapseMode="pin"
+            app:expandedTitleGravity="center_horizontal"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlwaysCollapsed">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:src="@mipmap/ic_app_bar"
+                android:backgroundTintMode="@color/colorPrimary"
+                android:alpha="0.5"
+                android:scaleType="centerCrop"/>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <!--<android.support.v4.widget.NestedScrollView-->
+        <!--android:id="@+id/recycler_container"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:scrollbars="vertical">-->
+        <!--<LinearLayout-->
+        <!--android:id="@+id/row_container"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="vertical">-->
+
+
+        <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/recycler_view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:scrollbars="vertical"-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+        <!--app:behavior_overlapTop="250dp" />-->
+
+        <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:text="@string/lorem"-->
+        <!--android:padding="16dp"/>-->
+
+
+        <!--</LinearLayout>-->
+    <!--</android.support.v4.widget.NestedScrollView>-->
+
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+        app:behavior_overlapTop="40dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <android.support.v4.view.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+    <!-- BOTTOM SHEET -->
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="308dp"
+        android:background="@color/colorBackground"
+        android:elevation="8dp"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+        app:behavior_peekHeight="@dimen/bottom_sheet_peek">
+
+        <LinearLayout
+            android:id="@+id/reveal_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <!-- HORIZONTAL WEEK DAY VIEW-->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/calendar_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+
+            <com.db.chart.view.BarChartView
+                android:id="@+id/barchart"
+                android:layout_marginTop="16dp"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>
