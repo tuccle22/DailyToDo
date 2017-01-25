@@ -32,7 +32,7 @@ public class DayInfo {
     public String getDayName(int position, Context context, int resource_id) {
         String Weekdays[] = context.getResources().getStringArray(resource_id);
         int day_num = getTodayPosition();
-        return Weekdays[((day_num+position+3)%7)];
+        return Weekdays[((day_num+position)%7)];
     }
 
     public String getTodayName(Context context, int resource_id) {

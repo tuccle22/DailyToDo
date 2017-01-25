@@ -57,7 +57,7 @@ public class SpanningLinearLayoutManager extends LinearLayoutManager {
 
     @Override
     public boolean canScrollVertically() {
-        return false;
+        return true;
     }
     @Override
     public boolean canScrollHorizontally() {
