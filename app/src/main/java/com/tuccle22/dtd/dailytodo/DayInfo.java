@@ -48,7 +48,7 @@ public class DayInfo {
         String[] weekdays = context.getResources().getStringArray(R.array.weekdays_short);
         int today = getTodayPosition();
         for (int i = 0; i < 7; i++) {
-            String day_of_week = weekdays[((today+i+3)%7)];
+            String day_of_week = weekdays[((today+i)%7)];
             String day_of_month = String.valueOf(cal.get(Calendar.DAY_OF_MONTH) + i);
             Days day = new Days(day_of_week, day_of_month);
             days_list.add(day);
