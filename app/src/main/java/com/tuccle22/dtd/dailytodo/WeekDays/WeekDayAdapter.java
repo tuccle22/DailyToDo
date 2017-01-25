@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,12 +32,13 @@ public class WeekDayAdapter extends RecyclerView.Adapter<WeekDayAdapter.MyViewHo
         @BindView(R.id.day_number) com.github.pavlospt.roundedletterview.RoundedLetterView day_of_month;
         @BindView(R.id.day_text) TextView day_of_week;
         @BindColor(R.color.colorPrimary) int color_primary;
+        @BindView(R.id.week_day_view) LinearLayout click_view;
 
         
         public MyViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
-            day_of_month.setOnClickListener(this);
+            click_view.setOnClickListener(this);
 
         }
         @Override
@@ -53,7 +55,7 @@ public class WeekDayAdapter extends RecyclerView.Adapter<WeekDayAdapter.MyViewHo
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View itemView = LayoutInflater.from(parent.getContext())
+        View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.week_day, parent, false);
         return new MyViewHolder(itemView);
     }
