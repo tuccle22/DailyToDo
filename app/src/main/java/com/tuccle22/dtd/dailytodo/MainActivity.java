@@ -126,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
         // Bottom Sheet
         bottom_sheet_behavior = BottomSheetBehavior.from(bottom_sheet);
         bottom_sheet_behavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-
         bottom_sheet_behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
