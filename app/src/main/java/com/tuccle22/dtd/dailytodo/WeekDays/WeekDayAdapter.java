@@ -68,7 +68,7 @@ public class WeekDayAdapter extends RecyclerView.Adapter<WeekDayAdapter.MyViewHo
             holder.day_of_month.setBackgroundColor(holder.color_primary);
         }
         holder.day_of_month.setTitleText(days.getDayOfMonth());
-        holder.day_of_week.setText(days.getDayOfWeek());
+        holder.day_of_week.setText(days.getDayOfWeekShort());
         
     }
 

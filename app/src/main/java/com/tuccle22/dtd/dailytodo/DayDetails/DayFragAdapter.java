@@ -8,10 +8,13 @@ package com.tuccle22.dtd.dailytodo.DayDetails;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
 
 
 public class DayFragAdapter extends FragmentPagerAdapter {
     private static int NUM_ITEMS = 7;
+    public View currentView;
 
     public DayFragAdapter(FragmentManager fragmentManager) {
         super(fragmentManager);
@@ -35,5 +38,17 @@ public class DayFragAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         return getItem(position).getArguments().getString("someTitle");
     }
+
+    @Override
+    public void setPrimaryItem(ViewGroup container, int position, Object object) {
+        Fragment f = (Fragment) object;
+        currentView = f.getView();
+    }
+
+    public View getCurrentView() {
+        return currentView;
+    }
+
+
 
 }

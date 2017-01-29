@@ -6,25 +6,20 @@
 
     <string name="action_settings">Settings</string>
 
+    <string name="title_ItemActivity">New To Do</string>
+    <string name="new_todo_title">Title of the To Do</string>
 
-    <string name="note">Note</string>
-    <string name="gallery">Gallery</string>
-    <string name="photo">Photo</string>
-    <string name="map">Map</string>
-
-    <string-array
-        name="weekdays_short">
-        <item>Sat</item>
-        <item>Sun</item>
-        <item>Mon</item>
-        <item>Tue</item>
-        <item>Wed</item>
-        <item>Thu</item>
-        <item>Fri</item>
+    <string-array name="weekdays_short">
+        <item>SAT</item>
+        <item>SUN</item>
+        <item>MON</item>
+        <item>TUE</item>
+        <item>WED</item>
+        <item>THU</item>
+        <item>FRI</item>
     </string-array>
 
-    <string-array
-        name="weekdays_long">
+    <string-array name="weekdays_long">
         <item>Saturday</item>
         <item>Sunday</item>
         <item>Monday</item>

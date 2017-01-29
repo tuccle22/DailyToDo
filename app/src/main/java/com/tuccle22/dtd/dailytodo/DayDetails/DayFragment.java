@@ -25,8 +25,7 @@ public class DayFragment extends Fragment {
     public static DayDetailAdapter day_detail_adapter;
     private int position;
 
-    @BindView(R.id.weekday_title) TextView title;
-//    @BindView(R.id.detail_recycler_view) RecyclerView detail_recycler_view;
+    @BindView(R.id.weekday_title) TextView weekday_title;
 
     // newInstance constructor for creating fragment with arguments
     public static DayFragment newInstance(int day) {
@@ -54,7 +53,8 @@ public class DayFragment extends Fragment {
             day_detail_list = savedInstanceState.getParcelableArrayList("DAY");
         }
         this.position = getArguments().getInt("POSITION");
-        title.setText(getTitle());
+        String title = DayInfo.getInstance().getWeekDays().get(this.position).getDayOfWeekLong();
+        weekday_title.setText(title);
 //
 //        this.position = getArguments().getInt("POSITION");
 //
@@ -70,6 +70,7 @@ public class DayFragment extends Fragment {
 //        test.setAdapter(day_detail_adapter);
 //        day_detail_list.add(new DayDetail("Here is text!"));
 
+
         return view;
     }
 
@@ -79,12 +80,4 @@ public class DayFragment extends Fragment {
         unbinder.unbind();
     }
 
-    private String getTitle() {
-        if (position == 0)
-            return "Today";
-        else if (position == 1)
-            return "Tomorrow";
-        else
-            return DayInfo.getInstance().getDayName(this.position, getContext(), R.array.weekdays_long);
-    }
 }
