@@ -6,6 +6,7 @@ import com.tuccle22.dtd.dailytodo.WeekDays.Days;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import butterknife.BindArray;
@@ -18,8 +19,11 @@ import butterknife.BindArray;
 
 public class DayInfo {
 
-    private Calendar cal = Calendar.getInstance();
-    HashMap<String, ArrayList<Days>> days_map = new HashMap<String, ArrayList<Days>>();
+
+    public static final int TODAY = 0;
+    public static final int TOMORROW = 1;
+    private HashMap<String, ArrayList<Days>> days_map = new HashMap<String, ArrayList<Days>>();
+    private ArrayList<Days> days_list = new ArrayList<>();
 
     private static DayInfo ourInstance = new DayInfo();
 
@@ -29,35 +33,33 @@ public class DayInfo {
 
     private DayInfo() { }
 
-    public String getDayName(int position, Context context, int resource_id) {
-        String Weekdays[] = context.getResources().getStringArray(resource_id);
-        int day_num = getTodayPosition();
-        return Weekdays[((day_num+position)%7)];
-    }
+    public void initWeek(Context context) {
+        days_list.clear();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        String weekdays_long[] = context.getResources().getStringArray(R.array.weekdays_long);
+        String weekdays_short[] = context.getResources().getStringArray(R.array.weekdays_short);
 
-    public String getTodayName(Context context, int resource_id) {
-        return getDayName(getTodayPosition(), context,  resource_id);
-    }
-
-    public int getTodayPosition() {
-        return cal.get(Calendar.DAY_OF_WEEK);
-    }
-
-    public ArrayList<Days> getBottomSheetDays(Context context) {
-        ArrayList<Days> days_list = new ArrayList<>();
-        String[] weekdays = context.getResources().getStringArray(R.array.weekdays_short);
-        int today = getTodayPosition();
         for (int i = 0; i < 7; i++) {
-            String day_of_week = weekdays[((today+i)%7)];
-            String day_of_month = String.valueOf(cal.get(Calendar.DAY_OF_MONTH) + i);
-            Days day = new Days(day_of_week, day_of_month);
+            String day_of_week_long;
+            if (i == TODAY) {
+                day_of_week_long = "Today";
+            } else if (i == TOMORROW) {
+                day_of_week_long = "Tomorrow";
+            } else {
+                day_of_week_long = weekdays_long[cal.get(Calendar.DAY_OF_WEEK)%7];
+            }
+
+            String day_of_week_short = weekdays_short[cal.get(Calendar.DAY_OF_WEEK)%7];
+            String day_of_month = String.valueOf(cal.get(Calendar.DAY_OF_MONTH));
+            Days day = new Days(day_of_week_long, day_of_week_short, day_of_month);
             days_list.add(day);
+            cal.add(Calendar.DAY_OF_YEAR, 1);
         }
-        return days_list;
     }
 
-    public ArrayList<Days> getDaysList(String DAY) {
-        return days_map.get(DAY);
+    public ArrayList<Days> getWeekDays() {
+        return days_list;
     }
 
 

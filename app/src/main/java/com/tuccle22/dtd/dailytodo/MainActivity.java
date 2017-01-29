@@ -1,19 +1,25 @@
 package com.tuccle22.dtd.dailytodo;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.db.chart.Tools;
 import com.db.chart.animation.Animation;
@@ -22,24 +28,21 @@ import com.db.chart.renderer.XRenderer;
 import com.db.chart.renderer.YRenderer;
 import com.db.chart.view.BarChartView;
 import com.tuccle22.dtd.dailytodo.DayDetails.DayFragAdapter;
+import com.tuccle22.dtd.dailytodo.DayDetails.ItemActivity;
 import com.tuccle22.dtd.dailytodo.Utils.Logging;
 import com.tuccle22.dtd.dailytodo.Utils.SpanningLinearLayoutManager;
 import com.tuccle22.dtd.dailytodo.WeekDays.Days;
 import com.tuccle22.dtd.dailytodo.WeekDays.WeekDayAdapter;
 
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnPageChange;
+import butterknife.OnClick;
 import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
-
-    // TODO: Build out the calendar view day of month in circleview, day of week below
-    // TODO: Build RecyclerView with calendar logic
-    // TODO: ArrayList or hashmap
 
 
     // Bottom Sheet View
@@ -48,25 +51,31 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.calendar_recycler_view) RecyclerView recycler_week;
+    @BindView(R.id.fab_create) FloatingActionButton fab_create;
 
     private ArrayList<Days> days_list = new ArrayList<>();
     public static WeekDayAdapter day_adapter;
+    FragmentPagerAdapter adapterViewPager;
 
-    @OnPageChange(R.id.view_pager)
-    public void onPageSelected (int position) {
-
-
-
-    }
-
+    // Chart Information
     private BarChartView mChart;
-
     private final String[] mLabels = {"", "", "", "", "", "", ""};
-
     private final float[][] mValues = {{6f, 2f, 4f, 5f, 3f, 7f, 1f}, {7.5f, 3.5f, 5.5f, 4f, 3.5f, 5.5f, 2f}};
 
 
     @BindView(R.id.view_pager) ViewPager view_pager;
+
+    @OnClick(R.id.fab_create)
+    public void onFabClicked() {
+        Intent intent = new Intent(getBaseContext(), ItemActivity.class);
+        Bundle bundle = new Bundle();
+        String day_title = DayInfo.getInstance().getWeekDays().get(view_pager.getCurrentItem()).getDayOfWeekLong();
+        bundle.putString("DAY_TITLE", day_title);
+        String day_of_month = DayInfo.getInstance().getWeekDays().get(view_pager.getCurrentItem()).getDayOfMonth();
+        bundle.putString("DAY_OF_MONTH", day_of_month);
+        intent.putExtras(bundle);
+        startActivity(intent, bundle);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,18 +89,15 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Timber.plant(new Logging());
         }
-        // Initialize Days of Week
-        Calendar cal = Calendar.getInstance();
 
+        DayInfo.getInstance().initWeek(this);
 
-
-
-        FragmentPagerAdapter adapterViewPager = new DayFragAdapter(getSupportFragmentManager());
+        adapterViewPager = new DayFragAdapter(getSupportFragmentManager());
         view_pager.setAdapter(adapterViewPager);
 
-
         // Set Horizontal Bottom Sheet RecyclerView
-        days_list.addAll(0, DayInfo.getInstance().getBottomSheetDays(this));
+
+        days_list.addAll(DayInfo.getInstance().getWeekDays());
         day_adapter = new WeekDayAdapter(days_list);
         final RecyclerView.LayoutManager daylayoutManager
                 = new SpanningLinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -131,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
                     mChart.setVisibility(View.GONE);
+
                 }
 
                 if (newState == BottomSheetBehavior.STATE_EXPANDED) {
@@ -144,6 +151,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+
 
         view_pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
         {
@@ -178,6 +188,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
+
+
 
     }
 

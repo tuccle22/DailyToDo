@@ -11,16 +11,22 @@ import android.os.Parcelable;
 
 public class Days implements Parcelable {
 
-    private String day_of_week;
+    private String day_of_week_long;
+    private String day_of_week_short;
     private String day_of_month;
 
-    public Days(String day_of_week, String day_of_month) {
-        this.day_of_week = day_of_week;
+    public Days(String day_of_week_long, String day_of_week_short, String day_of_month) {
+        this.day_of_week_long = day_of_week_long;
+        this.day_of_week_short = day_of_week_short;
         this.day_of_month = day_of_month;
     }
 
-    public String getDayOfWeek() {
-        return this.day_of_week;
+    public String getDayOfWeekLong() {
+        return this.day_of_week_long;
+    }
+
+    public String getDayOfWeekShort() {
+        return this.day_of_week_short;
     }
 
     public String getDayOfMonth() {
@@ -30,7 +36,8 @@ public class Days implements Parcelable {
 
 
     private Days(Parcel in) {
-        day_of_week = in.readString();
+        day_of_week_long = in.readString();
+        day_of_week_short = in.readString();
         day_of_month = in.readString();
     }
 
@@ -53,7 +60,8 @@ public class Days implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(day_of_week);
+        parcel.writeString(day_of_week_long);
+        parcel.writeString(day_of_week_short);
         parcel.writeString(day_of_month);
     }
 }
