@@ -31,18 +31,6 @@ public class ItemActivity extends AppCompatActivity {
         weekday_title.setText(day_title);
         String day_of_month = getIntent().getExtras().getString("DAY_OF_MONTH");
         circle_day_number.setTitleText(day_of_month);
-
-
-
-
-        getWindow().setExitTransition(null);
-        getWindow().setEnterTransition(null);
-//        InputMethodManager inputMethodManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
-//        inputMethodManager.showSoftInput(title, InputMethodManager.SHOW_IMPLICIT);
-
-        InputMethodManager imm = (InputMethodManager)getSystemService(Service.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(title_input, InputMethodManager.SHOW_IMPLICIT);
-
     }
 
     @Override
