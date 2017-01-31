@@ -128,7 +128,7 @@
         android:layout_width="match_parent"
         android:layout_height="308dp"
         android:background="@color/colorBackground"
-        android:elevation="2dp"
+        android:elevation="6dp"
         app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
         app:behavior_peekHeight="@dimen/bottom_sheet_peek">
 
@@ -140,21 +140,27 @@
             android:clickable="true"
             android:background="?attr/selectableItemBackground">
 
-            <!-- HORIZONTAL WEEK DAY VIEW-->
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/calendar_recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
-
-            <com.db.chart.view.BarChartView
+            <com.db.chart.view.LineChartView
                 android:id="@+id/barchart"
-                android:layout_marginTop="16dp"
-                android:visibility="invisible"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"/>
+                android:paddingEnd="26dp"
+                android:paddingStart="26dp"
+                android:layout_height="192dp"
+                android:layout_marginTop="16dp"
+                android:visibility="invisible" />
 
         </LinearLayout>
+
     </android.support.v4.widget.NestedScrollView>
+
+    <!-- HORIZONTAL WEEK DAY VIEW-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/calendar_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bottom_sheet_peek"
+        android:orientation="horizontal"
+        android:elevation="6dp"
+        android:paddingBottom="16dp"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        android:layout_gravity="bottom"/>
 </android.support.design.widget.CoordinatorLayout>

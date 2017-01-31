@@ -24,9 +24,11 @@ import android.view.ViewGroup;
 import com.db.chart.Tools;
 import com.db.chart.animation.Animation;
 import com.db.chart.model.BarSet;
+import com.db.chart.model.LineSet;
 import com.db.chart.renderer.XRenderer;
 import com.db.chart.renderer.YRenderer;
 import com.db.chart.view.BarChartView;
+import com.db.chart.view.LineChartView;
 import com.tuccle22.dtd.dailytodo.DayDetails.DayFragAdapter;
 import com.tuccle22.dtd.dailytodo.DayDetails.ItemActivity;
 import com.tuccle22.dtd.dailytodo.Utils.Logging;
@@ -58,9 +60,9 @@ public class MainActivity extends AppCompatActivity {
     FragmentPagerAdapter adapterViewPager;
 
     // Chart Information
-    private BarChartView mChart;
+    private LineChartView mChart;
     private final String[] mLabels = {"", "", "", "", "", "", ""};
-    private final float[][] mValues = {{6f, 2f, 4f, 5f, 3f, 7f, 1f}, {7.5f, 3.5f, 5.5f, 4f, 3.5f, 5.5f, 2f}};
+    private final float[] mValues = {6f, 2f, 4f, 5f, 3f, 7f, 1f};
 
 
     @BindView(R.id.view_pager) ViewPager view_pager;
@@ -96,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
         view_pager.setAdapter(adapterViewPager);
 
         // Set Horizontal Bottom Sheet RecyclerView
-
         days_list.addAll(DayInfo.getInstance().getWeekDays());
         day_adapter = new WeekDayAdapter(days_list);
         final RecyclerView.LayoutManager daylayoutManager
@@ -106,16 +107,16 @@ public class MainActivity extends AppCompatActivity {
         recycler_week.setAdapter(day_adapter);
 
 
-        mChart = (BarChartView) findViewById(R.id.barchart);
+        mChart = (LineChartView) findViewById(R.id.barchart);
 
         // Data
-        BarSet barSet = new BarSet(mLabels, mValues[0]);
+//        BarSet barSet = new BarSet(mLabels, mValues[0]);
+        LineSet barSet = new LineSet(mLabels, mValues);
         barSet.setColor(getResources().getColor(R.color.colorPrimary));
+        barSet.setDotsColor(getResources().getColor(R.color.colorAccent));
+        barSet.setDotsRadius(20f);
         mChart.addData(barSet);
 
-        mChart.setBarSpacing(Tools.fromDpToPx(35));
-        mChart.setRoundCorners(Tools.fromDpToPx(2));
-        mChart.setBarBackgroundColor(getResources().getColor(R.color.colorBackground));
 
         // Chart
         mChart.setXAxis(false)
